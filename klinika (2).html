@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klinikaga navbat</title>
+<style>
+body{font-family:Arial;background:#eaf5f5;padding:20px}
+main{max-width:450px;margin:auto;background:white;padding:25px;border-radius:15px}
+h1{color:#168080;text-align:center}
+input,select,button{width:100%;padding:12px;margin:8px 0;box-sizing:border-box}
+button{background:#168080;color:white;border:0;border-radius:7px;cursor:pointer}
+#natija{background:#eaf5f5;padding:10px}
+</style>
+</head>
+<body>
+<main>
+<h1>Klinika</h1>
+<h3>Onlayn navbat olish</h3>
+<form id="forma">
+<input id="ism" placeholder="Ism va familiya" required>
+<input id="tel" type="tel" placeholder="Telefon raqam" required>
+<select id="shifokor">
+<option>Terapevt</option>
+<option>Kardiolog</option>
+<option>Pediatr</option>
+</select>
+<input id="sana" type="date" required>
+<select id="vaqt">
+<option>09:00</option><option>10:00</option>
+<option>11:00</option><option>14:00</option><option>15:00</option>
+</select>
+<button type="submit">Navbat olish</button>
+</form>
+<h3>Mening navbatim</h3>
+<div id="natija">Hozircha navbat yo‘q</div>
+<button onclick="tozalash()">Navbatni bekor qilish</button>
+</main>
+<script>
+const forma=document.getElementById("forma");
+const natija=document.getElementById("natija");
+const ism=document.getElementById("ism");
+const tel=document.getElementById("tel");
+const shifokor=document.getElementById("shifokor");
+const sana=document.getElementById("sana");
+const vaqt=document.getElementById("vaqt");
+sana.min=new Date().toISOString().split("T")[0];
+forma.onsubmit=function(e){
+ e.preventDefault();
+ natija.innerHTML="Bemor: "+ism.value+
+ "<br>Telefon: "+tel.value+
+ "<br>Shifokor: "+shifokor.value+
+ "<br>Sana: "+sana.value+
+ "<br>Vaqt: "+vaqt.value;
+ alert("Navbat muvaffaqiyatli olindi!");
+};
+function tozalash(){
+ natija.textContent="Hozircha navbat yo‘q";
+}
+</script>
+</body>
+</html>
